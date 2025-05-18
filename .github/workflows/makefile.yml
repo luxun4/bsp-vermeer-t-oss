@@ -5,12 +5,9 @@ on:
 
 jobs:
   Build-Kernel:
-    strategy:
-      fail-fast: false
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
     steps:
       - name: Build Kernel
         uses: dabao1955/kernel_build_action@main
@@ -18,7 +15,7 @@ jobs:
           kernel-url: https://github.com/luxun4/bsp-vermeer-t-oss
           kernel-dir: kernel-source
           kernel-branch: main
-          config: gki_defconfig kalama_le_gki.fragment
+          config: gki_defconfig
           arch: arm64
           android-version: 12
           aosp-gcc: true
@@ -28,3 +25,6 @@ jobs:
           ksu-version: main
           disable-lto: true
           anykernel3: true
+          extra-cmd: |
+            cat arch/arm64/configs/gki_defconfig arch/arm64/configs/kalama_le_gki.fragment > .config
+            make olddefconfig
