@@ -26,5 +26,6 @@ jobs:
           disable-lto: true
           anykernel3: true
           extra-cmd: |
+            make ARCH=arm64 mrproper
             cat arch/arm64/configs/gki_defconfig arch/arm64/configs/kalama_le_gki.fragment > .config
-            make olddefconfig
+            make ARCH=arm64 olddefconfig
