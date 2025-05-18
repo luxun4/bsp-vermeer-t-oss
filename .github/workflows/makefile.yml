@@ -5,9 +5,9 @@ on:
 
 jobs:
   Build-Kernel:
-    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+    runs-on: ubuntu-latest
     permissions:
       contents: read
 
@@ -16,18 +16,15 @@ jobs:
         uses: dabao1955/kernel_build_action@main
         with:
           kernel-url: https://github.com/luxun4/bsp-vermeer-t-oss
-          # kernel-dir 不填写，表示在仓库根目录编译
-          defconfig: gki_defconfig
-          config: kalama_le_gki.fragment
+          kernel-dir: .
+          kernel-branch: main
+          config: gki_defconfig kalama_le_gki.fragment
           arch: arm64
+          android-version: 12
           aosp-gcc: true
           aosp-clang: true
           aosp-clang-version: r383902
-          android-version: 12
           ksu: true
           ksu-version: main
           disable-lto: true
           anykernel3: true
-
-      - name: Debug List Source Tree
-        run: ls -al && ls -al arch/arm64/configs || true
