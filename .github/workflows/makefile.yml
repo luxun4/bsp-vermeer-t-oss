@@ -16,7 +16,7 @@ jobs:
         uses: dabao1955/kernel_build_action@main
         with:
           kernel-url: https://github.com/luxun4/bsp-vermeer-t-oss
-          kernel-dir: .
+          kernel-dir: kernel-source
           kernel-branch: main
           config: gki_defconfig kalama_le_gki.fragment
           arch: arm64
