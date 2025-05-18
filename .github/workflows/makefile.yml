@@ -20,10 +20,10 @@ jobs:
           kernel-branch: main
           config: gki_defconfig
           arch: arm64
-          android-version: 12
+          android-version: 14
           aosp-gcc: true
           aosp-clang: true
-          aosp-clang-version: r383902
+          aosp-clang-version: r487747
           ksu: true
           ksu-version: main
           disable-lto: true
