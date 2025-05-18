@@ -5,9 +5,12 @@ on:
 
 jobs:
   Build-Kernel:
+    strategy:
+      fail-fast: false
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - name: Build Kernel
         uses: dabao1955/kernel_build_action@main
@@ -25,7 +28,3 @@ jobs:
           ksu-version: main
           disable-lto: true
           anykernel3: true
-          extra-cmd: |
-            make ARCH=arm64 mrproper
-            cat arch/arm64/configs/gki_defconfig arch/arm64/configs/kalama_le_gki.fragment > .config
-            make ARCH=arm64 olddefconfig
