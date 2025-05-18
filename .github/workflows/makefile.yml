@@ -1,5 +1,6 @@
 # A simple action usage
 name: Build Kernel
+
 on:
   workflow_dispatch:
 
@@ -18,13 +19,14 @@ jobs:
           kernel-url: https://github.com/luxun4/bsp-vermeer-t-oss
           kernel-dir: msm-5.1
           kernel-branch: main
+          defconfig: gki_defconfig
           config: kalama_le_gki.fragment
           arch: arm64
           aosp-gcc: true
           aosp-clang: true
+          aosp-clang-version: r383902
+          android-version: 12
           ksu: true
           ksu-version: main
-          android-version: 12
-          aosp-clang-version: r383902
           disable-lto: true
           anykernel3: true
